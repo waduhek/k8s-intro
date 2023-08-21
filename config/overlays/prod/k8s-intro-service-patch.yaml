@@ -1,0 +1,4 @@
+# Change the type of service when running in production
+- op: replace
+  path: /spec/type
+  value: LoadBalancer

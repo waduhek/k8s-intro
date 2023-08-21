@@ -1,0 +1,55 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+  name: redis-replica
+  labels:
+    app: redis
+    type: replica
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: redis
+      type: replica
+
+  template:
+    metadata:
+      labels:
+        app: redis
+        type: replica
+
+    spec:
+      containers:
+        - name: redis-replica
+          image: redis:7.0.12
+          command:
+            - redis-server
+            - /redis-replica/redis.conf
+          volumeMounts:
+            - name: redis-replica-config-mount
+              mountPath: /redis-replica
+              readOnly: true
+
+      volumes:
+        - name: redis-replica-config-mount
+          configMap:
+            name: redis-replica-configmap
+            items:
+              - key: redis-config
+                path: redis.conf
+---
+kind: ConfigMap
+apiVersion: v1
+
+metadata:
+  name: redis-replica-configmap
+  labels:
+    app: redis
+    type: replica
+
+data:
+  redis-config: |
+    replicaof redis-master.default 6379

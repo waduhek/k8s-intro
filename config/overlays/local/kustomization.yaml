@@ -1,0 +1,8 @@
+resources:
+  - ../../base
+
+patches:
+  - path: k8s-intro-image-patch.yaml
+    target:
+      kind: Deployment
+      name: k8s-intro

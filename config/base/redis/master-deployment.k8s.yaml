@@ -1,0 +1,25 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+  name: redis-master
+  labels:
+    app: redis
+    type: master
+
+spec:
+  selector:
+    matchLabels:
+      app: redis
+      type: master
+
+  template:
+    metadata:
+      labels:
+        app: redis
+        type: master
+
+    spec:
+      containers:
+        - image: redis:7.0.12
+          name: redis-master

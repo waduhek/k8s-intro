@@ -1,0 +1,8 @@
+# Build directories
+build
+
+# Kubernetes configuration stuff
+config
+
+# Miscellaneous files and directories
+.DS_Store

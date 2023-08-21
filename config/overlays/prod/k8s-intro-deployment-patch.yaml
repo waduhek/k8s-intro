@@ -1,0 +1,4 @@
+# Change the number of replicas running in production
+- op: replace
+  path: /spec/replicas
+  value: 3

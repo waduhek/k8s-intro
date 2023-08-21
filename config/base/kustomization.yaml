@@ -1,0 +1,7 @@
+resources:
+  - k8s-intro-deployment.k8s.yaml
+  - k8s-intro-service.k8s.yaml
+  - redis/master-deployment.k8s.yaml
+  - redis/master-service.k8s.yaml
+  - redis/replica-deployment.k8s.yaml
+  - redis/replica-service.k8s.yaml

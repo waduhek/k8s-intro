@@ -1,0 +1,9 @@
+# Change the image to the development image when running locally
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: waduhek/k8s-intro:dev
+
+# Set the imagePullPolicy to Never when running locally
+- op: add
+  path: /spec/template/spec/containers/0/imagePullPolicy
+  value: Never
